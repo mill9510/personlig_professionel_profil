@@ -1,0 +1,380 @@
+/************** genereal ***************/
+* {
+  margin: 0;
+}
+
+:root {
+  --white-col: whitesmoke;
+  --border-col: rgb(30, 30, 30);
+  --regular-white-col: white;
+  --general-font: "PT Sans Narrow", sans-serif;
+}
+
+body {
+  background-color: var(--white-col);
+  cursor: none;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.cursor {
+  width: 40px;
+  height: 40px;
+  background-color: #e6e6e6;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s;
+  /* musen tilpasser sig når den føres over indhold*/
+  mix-blend-mode: difference;
+  z-index: 2;
+}
+
+h2,
+h3,
+p,
+li {
+  font-family: var(--general-font);
+}
+
+/**************** header ***************/
+
+h1 {
+  font-family: var(--general-font);
+  font-size: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 20px;
+  /* margin-left: 7px; */
+}
+
+/************** header placement ***************/
+
+.intro {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.portrait_container,
+.intro_txt {
+  grid-row: 1 / -1;
+}
+
+.portrait_container {
+  grid-column: 6 / -1;
+  border: solid 2px var(--border-col);
+  padding: 0;
+}
+
+.portrait {
+  margin: 0px;
+  width: 800px;
+}
+
+.intro_txt {
+  grid-column: 1 / 10;
+  z-index: 1;
+}
+
+.txt_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.txt_grid h1 {
+  grid-column: span 2;
+}
+
+/************** footer ****************/
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--white-col);
+  border: 2px solid var(--border-col);
+  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: var(--border-col);
+  margin-top: 10rem;
+}
+
+.links {
+  justify-self: end;
+  align-self: end;
+}
+
+/************* animations ****************/
+
+.from-left {
+  transition: opacity 1s ease-in-out, transform 1s ease;
+  opacity: 0;
+}
+.from-left {
+  transform: translateY(50%);
+}
+
+.from-left.appear {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/************* collapsible **************/
+
+.collapsible_container {
+  margin-top: 10rem;
+}
+
+.collapsible_container button {
+  font-size: 20px;
+  border-bottom: solid 2px var(--border-col);
+}
+
+.collapsible {
+  font-family: var(--general-font);
+  background-color: var(--white-col);
+  color: var(--border-col);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  cursor: none;
+}
+
+.active,
+.collapsible:hover {
+  color: black;
+}
+
+.content {
+  padding: 0 18px;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+
+  font-size: 20px;
+  padding-top: 1rem;
+}
+
+.content.skills_collapsible ul {
+  display: flex;
+  flex-flow: wrap;
+  gap: 0.3rem;
+  gap: 10px;
+}
+
+.content.skills_collapsible ul li {
+  text-decoration: none;
+  list-style-type: none;
+  border: solid 2px var(--border-col);
+  object-fit: scale-down;
+  text-align: center;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.content.graphics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.content.graphics img {
+  max-width: 15rem;
+}
+
+.content.link {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  cursor: none;
+  text-align: center;
+}
+
+.ex_link {
+  padding-bottom: 10px;
+  cursor: none;
+}
+
+.ex_link img {
+  padding-left: 10px;
+  max-width: 25rem;
+
+  padding: 10px;
+}
+
+.ex_link:hover {
+  opacity: 1;
+  border: 2px solid var(--border-col);
+}
+
+/************* stor tablet tilpasninger **************/
+@media (max-width: 1100px) {
+  .cursor {
+    display: none;
+  }
+
+  /**************** header ***************/
+
+  h1 {
+    font-family: var(--general-font);
+    font-size: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .intro p {
+    font-size: 18px;
+  }
+
+  .portrait {
+    margin: 0px;
+    width: 500px;
+  }
+}
+
+/************* lille tablet tilpasninger **************/
+@media (max-width: 870px) {
+  .cursor {
+    display: none;
+  }
+
+  /**************** header ***************/
+
+  h1 {
+    font-family: var(--general-font);
+    font-size: 45px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .intro p {
+    font-size: 16px;
+  }
+
+  .portrait {
+    margin: 0px;
+    width: 400px;
+  }
+
+  /**************** collapsible ***************/
+
+  .content.content.graphics,
+  .content.link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/************* mobile tilpasninger **************/
+
+@media (max-width: 500px) {
+  .cursor {
+    display: none;
+  }
+
+  /************* header **************/
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .portrait_container {
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
+  }
+
+  .portrait {
+    margin: 0px;
+    width: 20rem;
+  }
+
+  .intro_txt {
+    grid-column: 1;
+    grid-row: 2/3;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 65px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  .intro p {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-left: 10px;
+    width: auto;
+  }
+
+  .txt_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  /************* collapsible **************/
+
+  .collapsible_container {
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 5rem;
+  }
+
+  .collapsible_container button {
+    font-size: 20px;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .content.content.graphics,
+  .content.link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ex_link {
+    padding-bottom: 10px;
+  }
+
+  .ex_link img {
+    width: 15rem;
+  }
+
+  /************* footer **************/
+
+  footer {
+    margin-top: 5rem;
+    padding: 1rem;
+  }
+}
